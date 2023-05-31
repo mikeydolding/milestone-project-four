@@ -1,0 +1,58 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="assets/css/fonts.googleapis.css"
+      crossorigin="anonymous"
+    />
+    <link
+      href="assets/css/fontawesome/css/fontawesome.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+    <title>Bootstrap demo</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+  </body>
+  <script src="assets/js/jquery.min.jsm.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+  <script src="assets/js/autocompleteSearch.js" type="module"></script>
+  <script src="assets/js/main.js" type="module"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script type="text/javascript">
+    function sendEmail(event) {
+      event.preventDefault();
+      console.log("contactForm", event);
+      Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "mikehdolding@proton.me",
+        Password: "F564735E41BA2B601D9E4A16662B48169D57",
+        To: "papayob820@in2reach.com",
+        From: "mikehdolding@proton.me",
+        Subject: "Sending Email using javascript",
+        Body: "Well that was easy!! ",
+        //Attachments: [{
+        //    name:"File_Name_with_Extension",
+        //    path:"Full Path of the file"
+        //}]
+      }).then(
+        alert("Email Sent")
+        //function(response) {
+        //    console.log("SUCCESS", response);
+        //},
+        //function(error) {
+        //    console.log("FAILED", error);
+        //}
+      );
+      return false; // To block from loading a new page
+    }
+  </script>
+</html>
