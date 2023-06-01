@@ -1,10 +1,12 @@
 {% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block meta %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% endblock %} {% block extra_meta %} {% endblock %} {% block corejs %}
     <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -16,11 +18,32 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-    <title>Bootstrap demo</title>
+    {% endblock %}
+    
+    {% block extra_css %}
+    {% endblock %}
+
+    <title>Bootstrap demo {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
+    <header class="container-fluid fixed-top"></header>
+
+    {% if messages %}
+    <div class="message-container"></div>
+    {% endif %}
     <h1>Hello, world!</h1>
   </body>
+
+  {% block page_header %}
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% block postloadjs %}
+  {% endblock %}
+
+  {% block corejs %}
   <script src="assets/js/jquery.min.jsm.js"></script>
   <script src="assets/js/popper.min.js"></script>
   <script src="assets/js/bootstrap/bootstrap.min.js"></script>
@@ -39,20 +62,9 @@
         From: "mikehdolding@proton.me",
         Subject: "Sending Email using javascript",
         Body: "Well that was easy!! ",
-        //Attachments: [{
-        //    name:"File_Name_with_Extension",
-        //    path:"Full Path of the file"
-        //}]
-      }).then(
-        alert("Email Sent")
-        //function(response) {
-        //    console.log("SUCCESS", response);
-        //},
-        //function(error) {
-        //    console.log("FAILED", error);
-        //}
-      );
+      }).then(alert("Email Sent"));
       return false; // To block from loading a new page
     }
   </script>
+  {% endblock %} {% block extra_js %} {% endblock %}
 </html>
