@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,25 +13,28 @@
     {% endblock %} 
     
     {% block corecss %}
-    <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet" />
     <link
       rel="stylesheet"
-      href="assets/css/fonts.googleapis.css"
+      href="{% static 'css/fonts.googleapis.css' %}"
       crossorigin="anonymous"
     />
     <link
-      href="assets/css/fontawesome/css/fontawesome.min.css"
+      href="{% static 'css/fontawesome/css/fontawesome.min.css' %}"
       rel="stylesheet"
     />
     <!--<link rel="stylesheet" href="assets/css/style.css" type="text/css" />-->
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    
     {% endblock %} {% block extra_css %} {% endblock %}
 
     <title>Bootstrap demo 
       {% block extra_title %}
       {% endblock %}
     </title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
   </head>
   <body>
     <header class="container-fluid fixed-top"></header>
@@ -49,12 +53,12 @@
     {% endblock %} 
     
     {% block corejs %}
-    <script src="assets/js/jquery.min.jsm.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap/bootstrap.min.js"></script>
-    <script src="assets/js/autocompleteSearch.js" type="module"></script>
-    <script src="assets/js/main.js" type="module"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="{% static 'js/jquery.min.jsm.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <!--<script src="{% static 'assets/js/autocompleteSearch.js' %}" type="module"></script>
+    <script src="{% static 'assets/js/main.js' %}" type="module"></script>-->
+    <!--<script src="https://smtpjs.com/v3/smtp.js"></script>-->
     <!--<script type="text/javascript">
     function sendEmail(event) {
       event.preventDefault();
