@@ -24,3 +24,5 @@ The newest version of Django does not automatically import the os module at the 
 Please check if this line of code is at the top of your settings.py file, it is not, please add it yourself:
 
 import os
+
+https://fontawesome.com/docs/web/use-with/python-django
