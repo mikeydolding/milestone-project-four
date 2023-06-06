@@ -6,7 +6,10 @@
     {% block meta %}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {% endblock %} {% block extra_meta %} {% endblock %} {% block corecss %}
+    {% endblock %} {% block extra_meta %} {% endblock %} 
+    
+    
+    {% block corecss %}
 
     <link
       href="{% static 'css/bootstrap/bootstrap.min.css' %}"
@@ -17,7 +20,6 @@
       href="{% static 'css/fonts.googleapis.css' %}"
       crossorigin="anonymous"
     />
-    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
     <!-- Our project just needs Font Awesome Free's Solid and Brand files -->
     <!--<link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
@@ -27,13 +29,46 @@
 
     {% endblock %} {% block extra_css %} {% endblock %}
 
+     
+    {% block corejs %}
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <script src="{% static 'js/test.js' %}"></script>
+    <script src="{% static 'js/jquery.min.jsm.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <!--<script src="{% static 'assets/js/autocompleteSearch.js' %}" type="module"></script>
+    <script src="{% static 'assets/js/main.js' %}" type="module"></script>-->
+    <!--<script src="https://smtpjs.com/v3/smtp.js"></script>-->
+    <!--<script type="text/javascript">
+    function sendEmail(event) {
+      event.preventDefault();
+      console.log("contactForm", event);
+      Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "mikehdolding@proton.me",
+        Password: "F564735E41BA2B601D9E4A16662B48169D57",
+        To: "papayob820@in2reach.com",
+        From: "mikehdolding@proton.me",
+        Subject: "Sending Email using javascript",
+        Body: "Well that was easy!! ",
+      }).then(alert("Email Sent"));
+      return false; // To block from loading a new page
+    }
+  </script>-->
+    {% endblock %} {% block extra_js %} {% endblock %}
+
     <title>Bootstrap demo {% block extra_title %} {% endblock %}</title>
   </head>
   <body>
     <header class="container-fluid fixed-top">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <div class="ms-auto order-0">
+            <a class="navbar-brand mx-auto" href="#"><img src="//placehold.it/75" width="75" height="75"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
           <button
             class="navbar-toggler"
             type="button"
@@ -139,6 +174,17 @@
                   <a
                     class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" 
                     href="#"
+                  >         
+                   <p class="my-0">
+                    <i class="fas fa-shopping-bag fa-lg"></i>
+
+                </p>
+                  </a>
+                </li>
+                <li class="nav-item text-left">
+                  <a
+                    class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" 
+                    href="#"
                   >
                     <p class="my-0">
                       {% if grand_total %}
@@ -146,8 +192,7 @@
                       {% else %}
                           $0.00
                       {% endif %}
-                  </p>
-                      <i class="fas fa-shopping-bag fa-lg"></i>
+                  </p>          
                   </a>
                 </li>
               </ul>
@@ -168,31 +213,6 @@
      
     {% block postloadjs %} 
     {% endblock %}
-    
-    {% block corejs %}
-    <script src="{% static 'js/test.js' %}"></script>
-    <script src="{% static 'js/jquery.min.jsm.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
-    <!--<script src="{% static 'assets/js/autocompleteSearch.js' %}" type="module"></script>
-    <script src="{% static 'assets/js/main.js' %}" type="module"></script>-->
-    <!--<script src="https://smtpjs.com/v3/smtp.js"></script>-->
-    <!--<script type="text/javascript">
-    function sendEmail(event) {
-      event.preventDefault();
-      console.log("contactForm", event);
-      Email.send({
-        Host: "smtp.elasticemail.com",
-        Username: "mikehdolding@proton.me",
-        Password: "F564735E41BA2B601D9E4A16662B48169D57",
-        To: "papayob820@in2reach.com",
-        From: "mikehdolding@proton.me",
-        Subject: "Sending Email using javascript",
-        Body: "Well that was easy!! ",
-      }).then(alert("Email Sent"));
-      return false; // To block from loading a new page
-    }
-  </script>-->
-    {% endblock %} {% block extra_js %} {% endblock %}
+   
   </body>
 </html>
