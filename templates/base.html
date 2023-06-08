@@ -67,23 +67,23 @@
       </div>
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <div class="ms-auto order-0">
+        <!--<div class="container-fluid">-->
+          <!--<div class="ms-auto order-0">
             <a class="navbar-brand mx-auto" href="#"><img src="{% static 'images/avatar.jpg' %}" width="75" height="75"                     class="rounded-circle"
             ></a>
-
-          </div>
-          <button
-            class="navbar-toggler"
-            type="button"
+          </div>-->
+          <div
+            class="navbar-toggler custom-toggler"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+            <span class="navbar-brand mx-auto" href="#"><img src="{% static 'images/avatar.jpg' %}" width="75" height="75"                     class="rounded-circle"
+              >
+            </span>
+          </div>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -202,17 +202,24 @@
               </ul>
             </div>
           </div>
-          </div>
+        <!--</div>-->
         </div>
       </nav>
 
     <div class="row bg-white">
-      <nav class="navbar navbar-expand-lg navbar-light w-100">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          {% include 'includes/mobile-top-header.html' %}
-          {% include 'includes/main-nav.html' %}
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <button class="navbar-toggler" 
+          type="button"
+          data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        {% include 'includes/mobile-top-header.html' %}
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          {% include 'includes/product-nav.html' %}
+          </div>
+        </div>
       </nav>
     </div>
     <div id="delivery-banner" class="row text-center">

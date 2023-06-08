@@ -143,3 +143,11 @@ input[type=submit] {
       padding-top: 164px;
   }
 }
+/*
+bs-navbar-toggler {
+  border-color: none !important; 
+} */
+
+.navbar-toggler{
+  border: 0 !important;
+}
