@@ -1,35 +1,34 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-<h1 class="display-1 text-success">Display 1</h1>
-<h1 class="">It works!</h1>
-<p class="text-success">.text-success</p>
-<button onClick="alert('You clicked the button using Javascript.');">
-  Click Me - I run Javascript
-</button>
-<button onclick="myFunction()">Click me!</button>
-<button id="about-btn">Click Me - I'm Javascript on Speed</button>
+<div class="container mt-5">
+  <div class="row">
+    <h1 class="display-1 text-success">Display 1</h1>
+    <h1 class="">It works!</h1>
+    <p class="text-success">.text-success</p>
+    <button onClick="alert('You clicked the button using Javascript.');">
+      Click Me - I run Javascript
+    </button>
+    <button onclick="myFunction()">Click me!</button>
+    <button id="about-btn">Click Me - I'm Javascript on Speed</button>
+  </div>
+</div>
 <script>
-$(document).ready( function() {
-    $("#about-btn").click( function(event) {
-        alert("You clicked the button using JQuery!");
+  $(document).ready(function () {
+    $("#about-btn").click(function (event) {
+      alert("You clicked the button using JQuery!");
     });
-});
+  });
 </script>
-
 
 <button id="myButton">Click me</button>
 <script>
-    $(document).ready(function() {
-        $('#myButton').click(function() {
-            alert('Button clicked!');
-        });
+  $(document).ready(function () {
+    $("#myButton").click(function () {
+      alert("Button clicked!");
     });
+  });
 </script>
-{% endblock %}
-
-
-{% block jquery %}
+{% endblock %} {% block jquery %}
 <script>
-    $(document).ready(function(){
-    })
-</script> 
+  $(document).ready(function () {});
+</script>
 {% endblock %}
