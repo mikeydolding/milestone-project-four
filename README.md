@@ -1,7 +1,10 @@
 # -milestone-project-four
 
 Django administration
-Username:Mikehdholding
+Username: mikehdolding
+Password: MichaelNivelle
+
+Username: superadmin
 Password: MichaelNivelle
 
 Terminal command update
@@ -26,3 +29,20 @@ Please check if this line of code is at the top of your settings.py file, it is 
 import os
 
 https://fontawesome.com/docs/web/use-with/python-django
+
+
+python3 manage.py runserver
+
+
+items.Item.image: (fields.E210) Cannot use ImageField because Pillow is not installed.
+        HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
+pip3 install pillow
+
+python3 manage.py makemigrations --dry-run
+python3 manage.py makemigrations
+python3 manage.py migrate --plan
+python3 manage.py migrate
+
+You can pass 'zero' to unapply migrations for an app.
+all migrations: python3 manage.py migrate example_app zero 
+specific migration: python3 manage.py migrate socialaccount 0004
