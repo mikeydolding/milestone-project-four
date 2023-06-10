@@ -157,3 +157,13 @@ bs-navbar-toggler {
 .dropdown { position: static; }
 .dropdown-menu  .custom-dropdown-menu { width: 100%; text-align: center; }
 .dropdown-menu  .custom-dropdown-menu>li { display: inline-block; }
+
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
+}
