@@ -3,7 +3,7 @@ from django.shortcuts import (
 )
 from django.contrib import messages
 
-from products.models import Item
+from items.models import Item
 
 
 def view_bag(request):
