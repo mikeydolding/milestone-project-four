@@ -152,3 +152,8 @@ bs-navbar-toggler {
   border: 0 !important;
 }
 
+
+.nav { margin-bottom: 0; }
+.dropdown { position: static; }
+.dropdown-menu  .custom-dropdown-menu { width: 100%; text-align: center; }
+.dropdown-menu  .custom-dropdown-menu>li { display: inline-block; }
