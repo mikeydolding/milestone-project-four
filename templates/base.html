@@ -152,9 +152,9 @@
                   <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
                     {% if request.user.is_authenticated %}
                                   {% if request.user.is_superuser %}
-                                  <li> <a href="{% url 'add_product' %}" class="dropdown-item">Item Management</a></li>
+                                  <li> <a href="" class="dropdown-item">Item Management</a></li>
                                   {% endif %}
-                                  <li><a href="{% url 'profile' %}" class="dropdown-item">My Profile</a></li>
+                                  <li><a href="" class="dropdown-item">My Profile</a></li>
                                   <li><a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
                               {% else %}
                                   <li><a href="{% url 'account_signup' %}" class="dropdown-item">Register</a></li>
