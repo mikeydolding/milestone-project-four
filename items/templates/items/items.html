@@ -10,27 +10,27 @@
 {% endblock %}
 
 {% block content %}
-<div class="overlay"></div>
+    <div class="overlay"></div>
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-3">
-                <h2 class="logo-font">Products</h2>
+                <h2 class="logo-font">Item</h2>
                 <hr class="w-50 mb-1">
             </div>
         </div>
         <div class="row">
-            <div class="product-container col-10 offset-1">
+            <div class="item-container col-10 offset-1">
                 <div class="row mt-1 mb-2"></div>
                 <div class="row">
                     {% for item in items %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 border-0">
                                 {% if item.image %}
-                                <a href="">
+                                <a href="{% url 'item_detail' item.id %}">
                                     <img class="card-img-top img-fluid" src="{{ item.image.url }}" alt="{{ item.name }}">
                                 </a>
                                 {% else %}
-                                <a href="">
+                                <a href="{% url 'item_detail' item.id %}">
                                     <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
                                 </a>
                                 {% endif %}
