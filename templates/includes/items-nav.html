@@ -6,9 +6,9 @@
         All Items
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#">By Price</a></li>
-        <li><a class="dropdown-item" href="#">By Rating</a></li>
-        <li><a class="dropdown-item" href="#">By Category</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?sort=price&direction=as">By Price</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?sort=rating&direction=desc">By Rating</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?sort=category&direction=asc">By Category</a></li>
         <li><a class="dropdown-item" href="{% url 'items' %}">All Items</a></li>
     </ul>
     </li>
