@@ -127,8 +127,6 @@ input[type=submit] {
   display: inline-block;
 }
 
-
-
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
   .fixed-top-desktop-only {
@@ -154,16 +152,7 @@ bs-navbar-toggler {
 
 
 .nav { margin-bottom: 0; }
-.dropdown { position: static; }
+/*.dropdown { position: static; }*/
 .dropdown-menu  .custom-dropdown-menu { width: 100%; text-align: center; }
 .dropdown-menu  .custom-dropdown-menu>li { display: inline-block; }
 
-.overlay {
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	position: fixed;
-	background: white;
-	z-index: -1;
-}
