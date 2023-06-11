@@ -1,15 +1,15 @@
-<a href="{% url 'items' %}?category=activewear,essentials" class="dropdown-item">Activewear &amp; Essentials</a>
 
 <ul class="navbar-nav col-lg-12 justify-content-lg-center">
+
     <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         All Items
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="#">By Price</a></li>
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="#">By Rating</a></li>
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="#">By Category</a></li>
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="{% url 'items' %}">All Items</a></li>
+        <li><a class="dropdown-item" href="#">By Price</a></li>
+        <li><a class="dropdown-item" href="#">By Rating</a></li>
+        <li><a class="dropdown-item" href="#">By Category</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}">All Items</a></li>
     </ul>
     </li>
     <li class="nav-item dropdown">
@@ -17,10 +17,10 @@
         Clothing
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="{% url 'items' %}?category=activewear,essentials" >Activewear &amp; Essentials</a></li>
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="{% url 'items' %}?category=jeans">Jeans</a></li>
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="{% url 'items' %}?category=shirts">Shirts</a></li>
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="{% url 'items' %}?category=activewear,essentials,jeans,shirts">All Clothings</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?category=activewear,essentials">Activewear &amp; Essentials</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?category=jeans">Jeans</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?category=shirts">Shirts</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?category=activewear,essentials,jeans,shirts">All Clothings</a></li>
     </ul>
     </li>
     <li class="nav-item dropdown">
@@ -28,9 +28,9 @@
         Homeware
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="{% url 'items' %}?category=bed_bath">Bed &amp; Bath</a></li>
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="{% url 'items' %}?category=kitchen_dining">Kitchen &amp; Dining</a></li>
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="{% url 'items' %}?category=bed_bath,kitchen_dining">All Homeware</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?category=bed_bath">Bed &amp; Bath</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?category=kitchen_dining">Kitchen &amp; Dining</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?category=bed_bath,kitchen_dining">All Homeware</a></li>
     </ul>
     </li>
     <li class="nav-item dropdown">
@@ -38,10 +38,10 @@
         Special Offers
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="{% url 'items' %}?category=new_arrivals">New Arrivals</a></li>
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="{% url 'items' %}?category=deals">Deals</a></li>
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="{% url 'items' %}?category=clearance">Clearance</a></li>
-        <li><a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="{% url 'items' %}?category=new_arrivals,deals,clearance">All Specials</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?category=new_arrivals">New Arrivals</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?category=deals">Deals</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?category=clearance">Clearance</a></li>
+        <li><a class="dropdown-item" href="{% url 'items' %}?category=new_arrivals,deals,clearance">All Specials</a></li>
     </ul>
     </li>
 </ul>
