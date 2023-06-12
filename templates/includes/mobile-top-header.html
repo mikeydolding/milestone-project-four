@@ -17,10 +17,7 @@
     class="dropdown-menu custom-dropdown-menu w-100 border-0 p-3 rounded-0 my-0"
     aria-labelledby="mobile-search"
   >
-  {% comment %}<form class="d-flex">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>{% endcomment %}
+
     <form class="form d-flex" method="GET" action="{% url 'items' %}">
       <div class="input-group w-100">
         <input
@@ -44,14 +41,15 @@
   </ul>
 </div>
 <div class="nav-item dropdown">
-  <a
-  class="d-flex align-items-center text-black text-decoration-none"
+  {% comment %}<a
+  class="align-items-center text-black text-decoration-none"
     href="#"
     id="mobile-search"
     data-bs-toggle="dropdown"
     aria-haspopup="true"
     aria-expanded="false"
-  >
+  >{% endcomment %}
+  <a class="text-black nav-link d-block d-lg-none" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <div class="text-center">
       <img
         src="{% static 'images/avatar.jpg' %}"

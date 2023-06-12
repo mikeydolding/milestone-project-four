@@ -11,34 +11,6 @@ body {
   color: #555555;
 }
 
-
-.carousel-item img {
-  /*opacity: 0.5;*/
-  object-fit: cover;
-  object-position: center;
-  height: 50vh;
-  overflow: hidden;
-}
-
-.carousel-item h1 {
-  color: white;
-}
-
-.carousel-item {
-  border-radius: 20px 20px 20px 20px;
-  overflow: hidden;
-}
-
-.carousel .carousel-item .carousel-caption {
-  text-shadow: #000 0.1em 0.1em 0.2em;
-}
-
-
-* {
-  box-sizing: border-box;
-}
-
-
 /*the container must be positioned relative:*/
 
 .autocomplete {
@@ -46,23 +18,6 @@ body {
   display: inline-block;
 }
 
-input {
-  border: 1px solid transparent;
-  background-color: #f1f1f1;
-  padding: 10px;
-  font-size: 16px;
-}
-
-input[type=text] {
-  background-color: #f1f1f1;
-  width: 100%;
-}
-
-input[type=submit] {
-  background-color: DodgerBlue;
-  color: #fff;
-  cursor: pointer;
-}
 
 .autocomplete-items {
   position: absolute;
@@ -92,10 +47,6 @@ input[type=submit] {
 
 /*when navigating through the items using the arrow keys:*/
 
-.autocomplete-active {
-  background-color: DodgerBlue !important;
-  color: #ffffff;
-}
 
 
 /* Style tab links */
