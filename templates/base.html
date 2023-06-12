@@ -35,6 +35,7 @@
     <script src="{% static 'js/jquery.min.jsm.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+
     <!--<script src="{% static 'assets/js/autocompleteSearch.js' %}" type="module"></script>
     <script src="{% static 'assets/js/main.js' %}" type="module"></script>-->
     <!--<script src="https://smtpjs.com/v3/smtp.js"></script>-->
@@ -61,7 +62,9 @@
   <body>
 
       <div class="p-5 bg-success text-center text-white">
-        <h1>My First Bootstrap 5 Page</h1>
+        <h1>
+          <a href="{% url 'home' %}" class="text-white text-decoration-none">My First Bootstrap 5 Page</a>
+        </h1>
         <p>Resize this responsive page to see the effect!</p> 
       </div>
 
@@ -178,7 +181,7 @@
                 <li class="nav-item text-left">
                   <a
                     class="{% if grand_total %}text-info {% else %}text-black{% endif %} nav-link" 
-                    href="#"
+                    href="{% url 'view_bag' %}"
                   >
                     <p class="my-0">
                       {% if grand_total %}

@@ -16,7 +16,6 @@ def all_items(request):
     sort = None
     direction = None
 
-
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
@@ -24,7 +23,8 @@ def all_items(request):
             if sortkey == 'name':
                  sortkey = 'lower_name'
                  items = items.annotate(lower_name=Lower('name'))
-
+            if sortkey == 'category':
+                 sortkey = 'category__name'
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
@@ -54,7 +54,6 @@ def all_items(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
-
     }
 
     return render(request, 'items/items.html', context)

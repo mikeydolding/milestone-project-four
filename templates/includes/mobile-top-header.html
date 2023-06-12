@@ -12,11 +12,16 @@
     <div><i class="fas fa-search fa-lg"></i></div>
     <p class="my-0">Search</p>
   </a>
+  
   <ul
     class="dropdown-menu -custom-dropdown-menu w-100 border-0 p-3 rounded-0 my-0"
     aria-labelledby="mobile-search"
   >
-    <form class="form" method="GET" action="{% url 'items' %}">
+  {% comment %}<form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>{% endcomment %}
+    <form class="form d-flex" method="GET" action="{% url 'items' %}">
       <div class="input-group w-100">
         <input
           class="form-control input-lg border border-black rounded-0"
@@ -40,7 +45,7 @@
 </div>
 <div class="nav-item dropdown">
   <a
-    class="text-black nav-link d-block d-lg-none"
+  class="d-flex align-items-center text-black text-decoration-none"
     href="#"
     id="mobile-search"
     data-bs-toggle="dropdown"
@@ -75,7 +80,7 @@
 <div class="nav-item">
   <a
     class="{% if grand_total %}text-primary {% else %}{% endif %} nav-link d-block d-lg-none"
-    href="#"
+    href="{% url 'view_bag' %}"
     id="mobile-search"
     data-bs-toggle="dropdown"
     aria-haspopup="true"
