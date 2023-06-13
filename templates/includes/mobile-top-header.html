@@ -75,7 +75,7 @@
   </div>
 </div>
 <div class="nav-item">
-  <a
+  {% comment %}<a
     class="{% if grand_total %}text-primary {% else %}{% endif %} nav-link d-block d-lg-none"
     href="{% url 'view_bag' %}"
     id="mobile-search"
@@ -90,5 +90,17 @@
         {% endif %}
       </p>
     </div>
-  </a>
+  </a>{% endcomment %}
+  <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none" href="{% url 'view_bag' %}">
+    <div class="text-center">
+        <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+        <p class="my-0">
+            {% if grand_total %}
+                ${{ grand_total|floatformat:2 }}
+            {% else %}
+                $0.00
+            {% endif %}
+        </p>
+    </div>
+</a>
 </div>
