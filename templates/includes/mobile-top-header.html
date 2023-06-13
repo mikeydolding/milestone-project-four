@@ -77,23 +77,23 @@
 <div class="nav-item">
   {% comment %}<a
     class="{% if grand_total %}text-primary {% else %}{% endif %} nav-link d-block d-lg-none"
-    href="{% url 'view_bag' %}"
+    href="{% url 'view_order' %}"
     id="mobile-search"
     data-bs-toggle="dropdown"
     aria-haspopup="true"
     aria-expanded="false"
   >
     <div class="text-center">
-      <i class="fas fa-shopping-bag fa-lg"></i>
+      <i class="fas fa-shopping-order fa-lg"></i>
       <p class="my-0">
         {% if grand_total %} ${{ grand_total|floatformat:2 }} {% else %} $0.00
         {% endif %}
       </p>
     </div>
   </a>{% endcomment %}
-  <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none" href="{% url 'view_bag' %}">
+  <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none" href="{% url 'view_order' %}">
     <div class="text-center">
-        <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+        <div><i class="fas fa-shopping-order fa-lg"></i></div>
         <p class="my-0">
             {% if grand_total %}
                 ${{ grand_total|floatformat:2 }}

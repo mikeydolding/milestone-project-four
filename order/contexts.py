@@ -4,19 +4,19 @@ from django.shortcuts import get_object_or_404
 from items.models import Item
 
 
-def bag_contents(request):
+def order_contents(request):
 
-    bag_items = []
+    order_items = []
     total = 0
     product_count = 0
-    bag = request.session.get('bag', {})
+    order = request.session.get('order', {})
 
-    for item_id, item_data in bag.items():
+    for item_id, item_data in order.items():
         if isinstance(item_data, int):
             item = get_object_or_404(Item, pk=item_id)
             total += item_data * item.price
             product_count += item_data
-            bag_items.append({
+            order_items.append({
                 'item_id': item_id,
                 'quantity': item_data,
                 'item': item,
@@ -26,7 +26,7 @@ def bag_contents(request):
             for size, quantity in item_data['items_by_size'].items():
                 total += quantity * item.price
                 product_count += quantity
-                bag_items.append({
+                order_items.append({
                     'item_id': item_id,
                     'quantity': quantity,
                     'item': item,
@@ -43,7 +43,7 @@ def bag_contents(request):
     grand_total = delivery + total
 
     context = {
-        'bag_items': bag_items,
+        'order_items': order_items,
         'total': total,
         'product_count': product_count,
         'delivery': delivery,
