@@ -42,6 +42,8 @@ python3 manage.py makemigrations --dry-run
 python3 manage.py makemigrations
 python3 manage.py migrate --plan
 python3 manage.py migrate
+python3 manage.py shell
+
 
 You can pass 'zero' to unapply migrations for an app.
 all migrations: python3 manage.py migrate example_app zero 
