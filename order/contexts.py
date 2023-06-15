@@ -6,29 +6,29 @@ from items.models import Item
 
 def order_contents(request):
 
-    order_items = []
+    orderItems = []
     total = 0
     product_count = 0
     order = request.session.get('order', {})
 
-    for order_item_id, order_item_data in order.items():
-        if isinstance(order_item_data, int):
-            item = get_object_or_404(Item, pk=order_item_id)
-            total += order_item_data * item.price
-            product_count += order_item_data
-            order_items.append({
-                'order_item_id': order_item_id,
-                'quantity': order_item_data,
+    for orderItem_id, orderItem_data in order.items():
+        if isinstance(orderItem_data, int):
+            item = get_object_or_404(Item, pk=orderItem_id)
+            total += orderItem_data * item.price
+            product_count += orderItem_data
+            orderItems.append({
+                'orderItem_id': orderItem_id,
+                'quantity': orderItem_data,
                 'item': item,
             })
         else:
-            item = get_object_or_404(Item, pk=order_item_id)
-            for size, quantity in order_item_data['order_items_by_size'].order_items():
+            item = get_object_or_404(Item, pk=orderItem_id)
+            for size, quantity in orderItem_data['orderItems_by_size'].orderItems():
                 total += quantity * item.price
                 product_count += quantity
-                order_items.append({
-                    'order_item_id': order_item_id, 
-                    'quantity': order_item_data,
+                orderItems.append({
+                    'orderItem_id': orderItem_id, 
+                    'quantity': orderItem_data,
                     'item': item,
                     'size': size,
                 })
@@ -43,7 +43,7 @@ def order_contents(request):
     grand_total = delivery + total
 
     context = {
-        'order_items': order_items,
+        'orderItems': orderItems,
         'total': total,
         'product_count': product_count,
         'delivery': delivery,

@@ -1,6 +1,5 @@
-{% extends "base.html" %} {% load static %} {% block page_header %}
-
-{% endblock %} {% block content %}
+{% extends "base.html" %} {% load static %} {% block page_header %} {% endblock
+%} {% block content %}
 <div class="overlay"></div>
 <div class="container mb-2">
   <div class="row">
@@ -13,11 +12,10 @@
 
   <div class="row">
     <div class="col">
-      {% if order_items %}
-        {{ order_items }}
-        <br>
-        <br>
-        {{ request.session.order }}
+      {% if orderItems %} {{ orderItems }}
+      <br />
+      <br />
+      {{ request.session.order }}
       <div class="table-responsive rounded">
         <table class="table table-sm table-borderless">
           <thead class="text-black">
@@ -30,29 +28,32 @@
             </tr>
           </thead>
 
-          {% for order_item in order_items %}
+          {% for orderItem in orderItems %}
           <tr>
             <td class="p-3 w-25">
               <img
                 class="img-fluid rounded"
-                src="{{ order_item.item.image.url }}"
+                src="{{ orderItem.item.image.url }}"
               />
             </td>
             <td class="py-3">
-              <p class="my-0"><strong>{{ order_item.item.name }}</strong></p>
-              <p class="my-0"><strong>Size: </strong>{% if order_item.item.has_sizes %}{{ order_item.size|upper }}{% else %}N/A{% endif %}</p>
+              <p class="my-0"><strong>{{ orderItem.item.name }}</strong></p>
+              <p class="my-0">
+                <strong>Size: </strong>{% if orderItem.item.has_sizes %}{{
+                orderItem.size|upper }}{% else %}N/A{% endif %}
+              </p>
               <p class="my-0 small text-muted">
-                SKU: {{ order_item.item.sku|upper }}
+                SKU: {{ orderItem.item.sku|upper }}
               </p>
             </td>
             <td class="py-3">
-              <p class="my-0">${{ order_item.item.price }}</p>
+              <p class="my-0">${{ orderItem.item.price }}</p>
             </td>
             <td class="py-3 w-25">
-              <p class="my-0">{{ order_item.quantity }}</p>
+              <p class="my-0">{{ orderItem.quantity }}</p>
             </td>
             <td class="py-3">
-              <p class="my-0">${{ order_item.item.price }}</p>
+              <p class="my-0">${{ orderItem.item.price }}</p>
             </td>
           </tr>
           {% endfor %}
