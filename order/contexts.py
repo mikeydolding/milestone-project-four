@@ -11,24 +11,24 @@ def order_contents(request):
     product_count = 0
     order = request.session.get('order', {})
 
-    for item_id, item_data in order.items():
-        if isinstance(item_data, int):
-            item = get_object_or_404(Item, pk=item_id)
-            total += item_data * item.price
-            product_count += item_data
+    for order_item_id, order_item_data in order.items():
+        if isinstance(order_item_data, int):
+            item = get_object_or_404(Item, pk=order_item_id)
+            total += order_item_data * item.price
+            product_count += order_item_data
             order_items.append({
-                'item_id': item_id,
-                'quantity': item_data,
+                'order_item_id': order_item_id,
+                'quantity': order_item_data,
                 'item': item,
             })
         else:
-            item = get_object_or_404(Item, pk=item_id)
-            for size, quantity in item_data['items_by_size'].items():
+            item = get_object_or_404(Item, pk=order_item_id)
+            for size, quantity in order_item_data['order_items_by_size'].order_items():
                 total += quantity * item.price
                 product_count += quantity
                 order_items.append({
-                    'item_id': item_id,
-                    'quantity': quantity,
+                    'order_item_id': order_item_id, 
+                    'quantity': order_item_data,
                     'item': item,
                     'size': size,
                 })
