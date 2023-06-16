@@ -42,7 +42,7 @@
         </button>
       </div>
       {% if item.item.has_sizes %}
-      <input type="hidden" name="product_size" value="{{ item.size }}" />
+      <input type="hidden" name="item_size" value="{{ item.size }}" />
       {% endif %}
     </div>
   </div>
@@ -51,6 +51,6 @@
 <a
   class="remove-item text-danger float-right"
   id="remove_{{ item.item_id }}"
-  data-product_size="{{ item.size }}"
+  data-item_size="{{ item.size }}"
   ><small>Remove</small></a
 >
