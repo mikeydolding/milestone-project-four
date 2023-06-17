@@ -23,6 +23,11 @@
         <div class="row">
             <div class="col">
                 {% if order_items %}
+
+                <div class="table-responsive rounded">
+                    Order Items: {{ order_items }}
+                </div>
+                {{ request.session.order.quantity }}
                     <div class="table-responsive rounded">
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
@@ -49,7 +54,7 @@
                                         <p class="my-0">${{ orderItem.item.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
-                                        <p class="my-0">{{ orderItem.quantity }}</p>
+                                        <p class="my-0">{{ orderItem.quantity  }}</p>
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">${{ orderItem.item.price }}</p>
