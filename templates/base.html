@@ -6,7 +6,10 @@
     {% block meta %}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {% endblock %} {% block extra_meta %} {% endblock %} 
+    {% endblock %} 
+    
+    {% block extra_meta %} 
+    {% endblock %} 
     
     
     {% block corecss %}
@@ -26,7 +29,11 @@
         <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" >-->
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
 
-    {% endblock %} {% block extra_css %} {% endblock %}
+    {% endblock %} 
+    
+    {% block extra_css %} 
+    
+    {% endblock %}
 
     
     {% block corejs %}
@@ -55,9 +62,14 @@
       return false; // To block from loading a new page
     }
   </script>-->
-    {% endblock %} {% block extra_js %} {% endblock %}
+    {% endblock %} 
+    
+    {% block extra_js %} 
+    
+    {% endblock %}
 
-    <title>Bootstrap demo {% block extra_title %} {% endblock %}</title>
+    <title>Bootstrap demo {% block extra_title %} 
+      {% endblock %}</title>
   </head>
   <body>
 

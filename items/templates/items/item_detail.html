@@ -1,10 +1,15 @@
-{% extends "base.html" %} {% load static %} {% block page_header %}
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block page_header %}
 <div class="container header-container">
   <div class="row">
     <div class="col"></div>
   </div>
 </div>
-{% endblock %} {% block content %}
+{% endblock %} 
+
+{% block content %}
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
@@ -68,16 +73,32 @@
               <p class="mt-3"><strong>Quantity:</strong></p>
               <div class="form-group w-50">
                 <div class="input-group">
-                  <input
-                    class="form-control qty_input"
-                    type="number"
-                    name="quantity"
-                    value="1"
-                    min="1"
-                    max="99"
-                    data-item_id="{{ item.id }}"
-                    id="id_qty_{{ item.id }}"
-                  />
+                  <div class="input-group-prepend">
+                    <button class="decrement-qty btn btn-dark rounded-0" 
+                        data-item_id="{{ item.id }}" id="decrement-qty_{{ item.id }}">
+                        <span class="icon">
+                            <i class="fas fa-minus"></i>
+                        </span>
+                    </button>
+                  </div>
+                    <input
+                      class="form-control qty_input"
+                      type="number"
+                      name="quantity"
+                      value="1"
+                      min="1"
+                      max="99"
+                      data-item_id="{{ item.id }}"
+                      id="id_qty_{{ item.id }}"
+                    />
+                    <div class="input-group-append">
+                      <button class="increment-qty btn btn-dark rounded-0"
+                          data-item_id="{{ item.id }}" id="increment-qty_{{ item.id }}">
+                          <span class="icon">
+                              <i class="fas fa-plus"></i>
+                          </span>
+                      </button>
+                  </div>                 
                 </div>
               </div>
             </div>
@@ -111,4 +132,9 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'items/includes/quantity_input_script.html' %}
 {% endblock %}
