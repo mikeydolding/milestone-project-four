@@ -1,4 +1,8 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+
+from django.contrib import messages
+
+from items.models import Item
 
 # Create your views here.
 
@@ -8,8 +12,9 @@ def view_order(request):
     return render(request, 'order/order.html')
 
 def add_to_order(request, orderItem_id):
-    """ Add a quantity of the specified product to the shopping order """
+    """ Add a quantity of the specified item to the shopping order """
 
+    item = get_object_or_404(Item, pk=orderItem_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     size = None
@@ -31,13 +36,14 @@ def add_to_order(request, orderItem_id):
             order[orderItem_id] += quantity
         else:
             order[orderItem_id] = quantity
+            messages.success(request, f'Added {item.name} to your order')
 
     request.session['order'] = order
-    print(request.session['order'])
+    #print(request.session['order'])
     return redirect(redirect_url)
     
 def update_order(request, orderItem_id):
-    """ Update quantity of the specified product to the shopping order """
+    """ Update quantity of the specified item to the shopping order """
     quantity = int(request.POST.get('quantity'))
 
 

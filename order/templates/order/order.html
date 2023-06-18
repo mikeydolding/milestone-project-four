@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load order_tools %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -91,7 +92,7 @@
                                         <a class="remove-item text-danger float-end" id="remove_{{ orderItem.orderItem_id }}" data-item_size="{{ orderItem.size }}"><small>Remove</small></a>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">${{ orderItem.item.price }}</p>
+                                        <p class="my-0">${{ orderItem.item.price | calc_subtotal:orderItem.quantity }}</p>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -137,7 +138,7 @@
             </div>
         </div>
     </div>
-{% endblock %}
+{% endblock %} 
 
 {% block postloadjs %}
 {{ block.super }}
