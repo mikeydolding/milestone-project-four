@@ -58,6 +58,12 @@ bs-navbar-toggler {
   cursor: pointer;
 }
 
+.order-notification-wrapper {
+  height: 100px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 #btn-back-to-top {
   display: none;
   /* Hidden by default */

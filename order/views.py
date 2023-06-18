@@ -27,13 +27,18 @@ def add_to_order(request, orderItem_id):
         if orderItem_id in list(order.keys()):
             if size in order[orderItem_id]['orderItems_by_size'].keys():
                 order[orderItem_id]['orderItems_by_size'][size] += quantity
+                messages.success(request, f'Added {item.name} to your order')
+
             else:
                 order[orderItem_id]['orderItems_by_size'][size] = quantity
         else:
             order[orderItem_id] = {'orderItems_by_size': {size: quantity}}
+            messages.success(request, f'Added {item.name} to your order')
+
     else:
         if orderItem_id in list(order.keys()):
             order[orderItem_id] += quantity
+            messages.success(request, f'Added {item.name} to your order')
         else:
             order[orderItem_id] = quantity
             messages.success(request, f'Added {item.name} to your order')

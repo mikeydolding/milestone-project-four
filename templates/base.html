@@ -142,7 +142,11 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#">   
                     <i class="fas fa-bell"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">1</span></i>
+                    {% comment %}<span class="top-0 start-100 translate-middle badge badge-notification rounded-pill bg-danger">
+                        99+
+                    </span>{% endcomment %}
+                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                  
                   </a>               
                 </li>
 
@@ -224,11 +228,14 @@
         </div>
       </nav>
     </div>
+
     <div id="delivery-banner" class="row text-center">
       <div class="col bg-black text-white">
           <h4 class="logo-font my-1">Free delivery on orders over ${{ free_delivery_threshold }}!</h4>                
       </div>            
   </div>
+  {% include 'includes/confirmations/messages.html' %}
+{% comment %}
     {% if messages %}
     <div class="message-container">
       {% for message in messages %}
@@ -246,7 +253,7 @@
             {% endfor %}
 
     </div>
-    {% endif %} 
+    {% endif %} {% endcomment %}
     
     {% block page_header %} 
     {% endblock %} 

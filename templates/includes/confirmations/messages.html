@@ -1,0 +1,191 @@
+{% if messages %}
+    {% for message in messages %}
+    {% with message.level as level %}
+    {% if level == 40 %}
+    {% elif level == 30 %}
+    {% elif level == 25 %}
+
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+        <!-- Position it: -->
+        <!-- - `.toast-container` for spacing between toasts -->
+        <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
+        <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+        <div class="toast-container position-absolute top-0 end-0 p-3">
+          <!-- Then put toasts within -->
+          <div class="toast show bg-white border-top-color callout-info" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="arrow-up arrow-success">
+            <div class="toast-header">
+              {% comment %}<img src="..." class="rounded me-2" alt="...">{% endcomment %}
+              <strong class="me-auto">Success!</strong>
+              <small class="text-muted"></small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                {{message }}
+
+                {% if grand_total %}
+                <p class="bg-white text-dark py-1">Your Order ({{ item_count }} items)</p>
+                <div class="overflow-auto">
+                    {% for orderItem in order_items %}
+                        <div class="row">
+                            <div class="col-3 my-1">
+                                <img class="w-100" src="{{ orderItem.item.image.url }}">
+                            </div>
+                            <div class="col-9">
+                                <p class="my-0"><strong>{{ orderItem.item.name }}</strong></p>
+                                <p class="my-0 small">Size: {% if orderItem.item.has_sizes %}{{ orderItem.size|upper }}{% else %}N/A{% endif %}</p>
+                                <p class="my-0 small text-muted">Qty: {{ orderItem.quantity }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <br>
+                <h5>
+                    Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: ${{ total|floatformat:2 }}
+                </h5>
+                <div class="d-grid">
+                    {% if free_delivery_delta > 0 %}
+                        <a class="w-100 btn btn-warning btn-block rounded-0" type="button"><small>Spend <strong>${{ free_delivery_delta }}</strong> more to get free next day delivery!</button>
+                    {% endif %}
+                        <a href="{% url 'view_order' %}" class="w-100 btn btn-dark btn-block rounded-0 text-uppercase" type="button">
+                        Go To Secure Checkout
+                            <i class="fas fa-lock"></i>
+                    </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+          </div>
+      
+          <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+              <img src="..." class="rounded me-2" alt="...">
+              <strong class="me-auto">Success!</strong>
+              <small class="text-muted">2 seconds ago</small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+              Heads up, toasts will stack automatically
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+
+      
+        {% comment %}<div class="row">
+            <div class="col">
+                {{ message }}
+                <hr class="mt-1 mb-3">
+            </div>
+        </div>
+        {% if grand_total %}
+            <p class="bg-white text-dark py-1">Your Order ({{ order_count }})</p>
+            <div class="order-notification-wrapper">
+                {% for orderItem in order_items %}
+                    <div class="row">
+                        <div class="col-3 my-1">
+                            <img class="w-100" src="{{ orderItem.item.image.url }}">
+                        </div>
+                        <div class="col-9">
+                            <p class="my-0"><strong>{{ orderItem.item.name }}</strong></p>
+                            <p class="my-0 small">Size: {% if orderItem.item.has_sizes %}{{ orderItem.size|upper }}{% else %}N/A{% endif %}</p>
+                            <p class="my-0 small text-muted">Qty: {{ orderItem.quantity }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col">
+                    <strong><p class="mt-3 mb-1 text-black">
+                        Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: 
+                        <span class="float-right">${{ total|floatformat:2 }}</span>
+                    </p></strong>
+                    {% if free_delivery_delta > 0 %}
+                        <p class="mb-0 p-2 bg-warning shadow-sm text-black text-center">
+                            Spend <strong>${{ free_delivery_delta }}</strong> more to get free next day delivery!
+                        </p>
+                    {% endif %}
+                    <a href="{% url 'view_order' %}" class="btn btn-black btn-block rounded-0">
+                        <span class="text-uppercase">Go To Secure Checkout</span>
+                        <span class="icon">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        {% endif %}{% endcomment %}
+    {% else %}
+        <strong class="text-capitalize">Information!</strong>
+    {% endif %}
+    {% endwith %}
+    {% endfor %}
+{% endif %}
+
+{% comment %}{% if messages %}
+    {% for message in messages %}
+     <div class="alert  {{ message.tags }} alert-dismissible fade show" role="alert">
+    {% with message.level as level %}
+    {% if level == 40 %}
+        <strong class="text-capitalize">Error!</strong>
+    {% elif level == 30 %}
+        <strong class="text-capitalize">Warning!</strong>
+    {% elif level == 25 %}
+        <strong class="text-capitalize">Success!</strong>
+
+        <div class="row">
+            <div class="col">
+                {{ message }}
+                <hr class="mt-1 mb-3">
+            </div>
+        </div>
+        {% if grand_total %}
+            <p class="bg-white text-dark py-1">Your Order ({{ order_count }})</p>
+            <div class="order-notification-wrapper">
+                {% for orderItem in order_items %}
+                    <div class="row">
+                        <div class="col-3 my-1">
+                            <img class="w-100" src="{{ orderItem.item.image.url }}">
+                        </div>
+                        <div class="col-9">
+                            <p class="my-0"><strong>{{ orderItem.item.name }}</strong></p>
+                            <p class="my-0 small">Size: {% if orderItem.item.has_sizes %}{{ orderItem.size|upper }}{% else %}N/A{% endif %}</p>
+                            <p class="my-0 small text-muted">Qty: {{ orderItem.quantity }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col">
+                    <strong><p class="mt-3 mb-1 text-black">
+                        Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: 
+                        <span class="float-right">${{ total|floatformat:2 }}</span>
+                    </p></strong>
+                    {% if free_delivery_delta > 0 %}
+                        <p class="mb-0 p-2 bg-warning shadow-sm text-black text-center">
+                            Spend <strong>${{ free_delivery_delta }}</strong> more to get free next day delivery!
+                        </p>
+                    {% endif %}
+                    <a href="{% url 'view_order' %}" class="btn btn-black btn-block rounded-0">
+                        <span class="text-uppercase">Go To Secure Checkout</span>
+                        <span class="icon">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <strong class="text-capitalize">Information!</strong>
+    {% endif %}
+    {% endwith %}
+         {{ message }}.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+    {% endfor %}
+{% endif %}
+
+{% endcomment %}
