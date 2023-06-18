@@ -32,21 +32,11 @@ def order_contents(request):
         else:
             item = get_object_or_404(Item, pk=orderItem_id)
             for size, quantity in orderItem_data['orderItems_by_size'].items():
-                print('size',size)
-
-                print('order',orderItem_data['orderItems_by_size'].items())
-                print('quantity',quantity)
-                print('item.price',item.price)
-
                 total += quantity * item.price
-                print('total',total)
-
                 item_count += quantity
-                print('item_count',item_count)
-
                 order_items.append({
                     'orderItem_id': orderItem_id,
-                    'quantity': orderItem_data,
+                    'quantity': quantity,
                     'item': item,
                     'size': size,
                 })

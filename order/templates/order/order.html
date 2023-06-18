@@ -25,7 +25,7 @@
                 {% if order_items %}
 
                 <div class="table-responsive rounded">
-                    Order Items: {{ order_items }}
+                    order_items: {{ order_items }}
                 </div>
                 {{ request.session.order.quantity }}
                     <div class="table-responsive rounded">
@@ -46,6 +46,8 @@
                                         <img class="img-fluid rounded" src="{{ orderItem.item.image.url }}">
                                     </td>
                                     <td class="py-3">
+                                        <p class="my-0"><strong>{{ orderItem.item.id }}</strong></p>
+
                                         <p class="my-0"><strong>{{ orderItem.item.name }}</strong></p>
                                         <p class="my-0"><strong>Size: </strong>{% if orderItem.item.has_sizes %}{{ orderItem.size|upper }}{% else %}N/A{% endif %}</p>
                                         <p class="my-0 small text-muted">SKU: {{ orderItem.item.sku|upper }}</p>
@@ -54,7 +56,39 @@
                                         <p class="my-0">${{ orderItem.item.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
-                                        <p class="my-0">{{ orderItem.quantity  }}</p>
+                                        <form class="form update-form" method="POST" action="">
+                                            {% csrf_token %}
+                                            
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button class="decrement-qty btn btn-sm btn-dark rounded-0" 
+                                                            data-item_id="{{ orderItem.orderItem_id }}" id="decrement-qty_{{ orderItem.orderItem_id }}">
+                                                            <span>
+                                                                <i class="fas fa-minus fa-sm"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                    <input class="form-control form-control-sm qty_input" type="number"
+                                                        name="quantity" value="{{ orderItem.quantity }}" min="1" max="99"
+                                                        data-item_id="{{ orderItem.orderItem_id }}"
+                                                        id="id_qty_{{ orderItem.orderItem_id }}">
+                                                    <div class="input-group-append">
+                                                        <button class="increment-qty btn btn-sm btn-dark rounded-0"
+                                                            data-item_id="{{ orderItem.orderItem_id }}" id="increment-qty_{{ orderItem.orderItem_id }}">
+                                                            <span>
+                                                                <i class="fas fa-plus fa-sm"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                    {% if orderItem.item.has_sizes %}
+                                                        <input type="hidden" name="item_size" value="{{ orderItem.size }}">
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <a class="update-link text-info"><small>Update</small></a>
+                                        <a class="remove-item text-danger float-end" id="remove_{{ orderItem.orderItem_id }}" data-size="{{ orderItem.size }}"><small>Remove</small></a>
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">${{ orderItem.item.price }}</p>
@@ -103,4 +137,32 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'items/includes/quantity_input_script.html' %}
+
+<script type="text/javascript">
+    // Update quantity on click
+    $('.update-link').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var orderItemId = $(this).attr('id').split('remove_')[1];
+        var size = $(this).data('size');
+        var url = `/order/remove/${orderItemId}`;
+    
+        var data = {'csrfmiddlewaretoken': csrfToken, 'size': size};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+</script>
 {% endblock %}
