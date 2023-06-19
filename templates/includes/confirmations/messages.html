@@ -39,7 +39,7 @@
                 <br>
                 <h6>
                     Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: ${{ total|floatformat:2 }}
-                </h6>
+                </h6>  
                 <div class="d-grid">
                     {% if free_delivery_delta > 0 %}
                         <a class="w-100 btn btn-warning btn-block rounded-0" type="button"><small>Spend <strong>${{ free_delivery_delta }}</strong> more to get free next day delivery!</button>

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'home',
     'items',
     'order',
+    'checkout',
     'bootstrap5',
     'fontawesomefree',
 ]
