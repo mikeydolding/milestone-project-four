@@ -1,10 +1,10 @@
 from django import forms
-from .models import Action
+from .models import Transaction
 
 
-class ActionForm(forms.ModelForm):
+class TransactionForm(forms.ModelForm):
     class Meta:
-        model = Action
+        model = Transaction
         fields = (
             "full_name",
             "email",
