@@ -23,15 +23,15 @@
                 {% if grand_total %}
                 <p class="bg-white text-dark py-1">Your Order ({{ item_count }} items)</p>
                 <div class="order-notification">
-                    {% for orderItem in order_items %}
+                    {% for order_item in order_items %}
                         <div class="row">
                             <div class="col-3 my-1">
-                                <img class="w-100" src="{{ orderItem.item.image.url }}">
+                                <img class="w-100" src="{{ order_item.item.image.url }}">
                             </div>
                             <div class="col-9">
-                                <p class="my-0"><strong>{{ orderItem.item.name }}</strong></p>
-                                <p class="my-0 small">Size: {% if orderItem.item.has_sizes %}{{ orderItem.size|upper }}{% else %}N/A{% endif %}</p>
-                                <p class="my-0 small text-muted">Qty: {{ orderItem.quantity }}</p>
+                                <p class="my-0"><strong>{{ order_item.item.name }}</strong></p>
+                                <p class="my-0 small">Size: {% if order_item.item.has_sizes %}{{ order_item.size|upper }}{% else %}N/A{% endif %}</p>
+                                <p class="my-0 small text-muted">Qty: {{ order_item.quantity }}</p>
                             </div>
                         </div>
                     {% endfor %}
@@ -67,15 +67,15 @@
         {% if grand_total %}
             <p class="bg-white text-dark py-1">Your Order ({{ order_count }})</p>
             <div class="order-notification-wrapper">
-                {% for orderItem in order_items %}
+                {% for order_item in order_items %}
                     <div class="row">
                         <div class="col-3 my-1">
-                            <img class="w-100" src="{{ orderItem.item.image.url }}">
+                            <img class="w-100" src="{{ order_item.item.image.url }}">
                         </div>
                         <div class="col-9">
-                            <p class="my-0"><strong>{{ orderItem.item.name }}</strong></p>
-                            <p class="my-0 small">Size: {% if orderItem.item.has_sizes %}{{ orderItem.size|upper }}{% else %}N/A{% endif %}</p>
-                            <p class="my-0 small text-muted">Qty: {{ orderItem.quantity }}</p>
+                            <p class="my-0"><strong>{{ order_item.item.name }}</strong></p>
+                            <p class="my-0 small">Size: {% if order_item.item.has_sizes %}{{ order_item.size|upper }}{% else %}N/A{% endif %}</p>
+                            <p class="my-0 small text-muted">Qty: {{ order_item.quantity }}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -127,15 +127,15 @@
         {% if grand_total %}
             <p class="bg-white text-dark py-1">Your Order ({{ order_count }})</p>
             <div class="order-notification-wrapper">
-                {% for orderItem in order_items %}
+                {% for order_item in order_items %}
                     <div class="row">
                         <div class="col-3 my-1">
-                            <img class="w-100" src="{{ orderItem.item.image.url }}">
+                            <img class="w-100" src="{{ order_item.item.image.url }}">
                         </div>
                         <div class="col-9">
-                            <p class="my-0"><strong>{{ orderItem.item.name }}</strong></p>
-                            <p class="my-0 small">Size: {% if orderItem.item.has_sizes %}{{ orderItem.size|upper }}{% else %}N/A{% endif %}</p>
-                            <p class="my-0 small text-muted">Qty: {{ orderItem.quantity }}</p>
+                            <p class="my-0"><strong>{{ order_item.item.name }}</strong></p>
+                            <p class="my-0 small">Size: {% if order_item.item.has_sizes %}{{ order_item.size|upper }}{% else %}N/A{% endif %}</p>
+                            <p class="my-0 small text-muted">Qty: {{ order_item.quantity }}</p>
                         </div>
                     </div>
                 {% endfor %}
