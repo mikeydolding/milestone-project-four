@@ -55,7 +55,7 @@ class Action(models.Model):
         return self.action_number
 
 
-class ActionLineItem(models.Model):
+class ActionLineOrderItem(models.Model):
     action = models.ForeignKey(Action, null=False, blank=False, on_delete=models.CASCADE, related_name='lineorderitems')
     item = models.ForeignKey(Item, null=False, blank=False, on_delete=models.CASCADE)
     item_size = models.CharField(max_length=2, null=True, blank=True) # XS, S, M, L, XL
