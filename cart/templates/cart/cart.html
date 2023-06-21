@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% load order_tools %}
+{% load cart_tools %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -16,24 +16,24 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">Order</h2>
+                <h2 class="logo-font mb-4">Cart</h2>
                 <hr>
             </div>
         </div>
 
         <div class="row">
             <div class="col">
-                {% if order_items %}
+                {% if cart_items %}
 
                 <div class="table-responsive rounded">
-                    {% comment %}order_items: {{ order_items }}{% endcomment %}
+                    {% comment %}cart_items: {{ cart_items }}{% endcomment %}
                 </div>
-                {% comment %}{{ request.session.order.quantity }}{% endcomment %}
+                {% comment %}{{ request.session.cart.quantity }}{% endcomment %}
                     <div class="table-responsive rounded">
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
                                 <tr>
-                                    <th scope="col">Order Info</th>
+                                    <th scope="col">Cart Info</th>
                                     <th scope="col"></th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Qty</th>
@@ -41,64 +41,64 @@
                                 </tr>
                             </thead>
 
-                            {% for order_item in order_items %}
+                            {% for cart_item in cart_items %}
                                 <tr>
                                     <td class="p-3 w-25">
-                                        <img class="img-fluid rounded" src="{{ order_item.item.image.url }}">
+                                        <img class="img-fluid rounded" src="{{ cart_item.item.image.url }}">
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0"><strong>{{ order_item.item.id }}</strong></p>
+                                        <p class="my-0"><strong>{{ cart_item.item.id }}</strong></p>
 
-                                        <p class="my-0"><strong>{{ order_item.item.name }}</strong></p>
-                                        <p class="my-0"><strong>Size: </strong>{% if order_item.item.has_sizes %}{{ order_item.size|upper }}{% else %}N/A{% endif %}</p>
-                                        <p class="my-0 small text-muted">SKU: {{ order_item.item.sku|upper }}</p>
+                                        <p class="my-0"><strong>{{ cart_item.item.name }}</strong></p>
+                                        <p class="my-0"><strong>Size: </strong>{% if cart_item.item.has_sizes %}{{ cart_item.size|upper }}{% else %}N/A{% endif %}</p>
+                                        <p class="my-0 small text-muted">SKU: {{ cart_item.item.sku|upper }}</p>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">${{ order_item.item.price }}</p>
+                                        <p class="my-0">${{ cart_item.item.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
-                                        <form class="form update-form" method="POST" action="{% url 'update_order' order_item.order_item_id %}">
+                                        <form class="form update-form" method="POST" action="{% url 'update_cart' cart_item.cart_item_id %}">
                                             {% csrf_token %}
                                             
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <button class="decrement-qty btn btn-sm btn-dark rounded-0" 
-                                                            data-item_id="{{ order_item.order_item_id }}" id="decrement-qty_{{ order_item.order_item_id }}">
+                                                            data-item_id="{{ cart_item.cart_item_id }}" id="decrement-qty_{{ cart_item.cart_item_id }}">
                                                             <span>
                                                                 <i class="fas fa-minus fa-sm"></i>
                                                             </span>
                                                         </button>
                                                     </div>
                                                     <input class="form-control form-control-sm qty_input" type="number"
-                                                        name="quantity" value="{{ order_item.quantity }}" min="1" max="99"
-                                                        data-item_id="{{ order_item.order_item_id }}"
-                                                        id="id_qty_{{ order_item.order_item_id }}">
+                                                        name="quantity" value="{{ cart_item.quantity }}" min="1" max="99"
+                                                        data-item_id="{{ cart_item.cart_item_id }}"
+                                                        id="id_qty_{{ cart_item.cart_item_id }}">
                                                     <div class="input-group-append">
                                                         <button class="increment-qty btn btn-sm btn-dark rounded-0"
-                                                            data-item_id="{{ order_item.order_item_id }}" id="increment-qty_{{ order_item.order_item_id }}">
+                                                            data-item_id="{{ cart_item.cart_item_id }}" id="increment-qty_{{ cart_item.cart_item_id }}">
                                                             <span>
                                                                 <i class="fas fa-plus fa-sm"></i>
                                                             </span>
                                                         </button>
                                                     </div>
-                                                    {% if order_item.item.has_sizes %}
-                                                        <input type="hidden" name="item_size" value="{{ order_item.size }}">
+                                                    {% if cart_item.item.has_sizes %}
+                                                        <input type="hidden" name="item_size" value="{{ cart_item.size }}">
                                                     {% endif %}
                                                 </div>
                                             </div>
                                         </form>
                                         <a class="update-link text-info"><small>Update</small></a>
-                                        <a class="remove-item text-danger float-end" id="remove_{{ order_item.order_item_id }}" data-item_size="{{ order_item.size }}"><small>Remove</small></a>
+                                        <a class="remove-item text-danger float-end" id="remove_{{ cart_item.cart_item_id }}" data-item_size="{{ cart_item.size }}"><small>Remove</small></a>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">${{ order_item.item.price | calc_subtotal:order_item.quantity }}</p>
+                                        <p class="my-0">${{ cart_item.item.price | calc_subtotal:cart_item.quantity }}</p>
                                     </td>
                                 </tr>
                             {% endfor %}
                             <tr> 
                                 <td colspan="5" class="pt-5 text-right">
-                                    <h6><strong>Order Total: ${{ total|floatformat:2 }}</strong></h6>
+                                    <h6><strong>Cart Total: ${{ total|floatformat:2 }}</strong></h6>
                                     <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
                                     <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
                                     {% if free_delivery_delta > 0 %}
@@ -127,7 +127,7 @@
                         </table>
                     </div>
                 {% else %}
-                    <p class="lead mb-5">Your order is empty.</p>
+                    <p class="lead mb-5">Your cart is empty.</p>
                     <a href="{% url 'items' %}" class="btn btn-outline-black rounded-0 btn-lg">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
@@ -155,9 +155,9 @@
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
 
-        var order_itemId = $(this).attr('id').split('remove_')[1];
+        var cart_itemId = $(this).attr('id').split('remove_')[1];
         var size = $(this).data('item_size');
-        var url = `/order/remove/${order_itemId}/`;
+        var url = `/cart/remove/${cart_itemId}/`;
     
         var data = {'csrfmiddlewaretoken': csrfToken, 'item_size': size};
         $.post(url, data)

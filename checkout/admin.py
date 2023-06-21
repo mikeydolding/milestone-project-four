@@ -1,16 +1,16 @@
 from django.contrib import admin
-from .models import Transaction, TransactionLineOrderItem
+from .models import Transaction, TransactionLineCartItem
  
 # Register your models here.
 
 
-class TransactionLineOrderItemAdminInline(admin.TabularInline):
-    model = TransactionLineOrderItem
+class TransactionLineCartItemAdminInline(admin.TabularInline):
+    model = TransactionLineCartItem
     readonly_fields = ("lineorderitem_total",)
 
 
 class TransactionAdmin(admin.ModelAdmin):
-    inlines = (TransactionLineOrderItemAdminInline,)
+    inlines = (TransactionLineCartItemAdminInline,)
 
     readonly_fields = (
         "transaction_number",

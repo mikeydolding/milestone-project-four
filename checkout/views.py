@@ -5,10 +5,10 @@ from .forms import TransactionForm
 
 
 def checkout(request):
-    order = request.session.get('order', {})
-    if not order:
-        messages.error(request, "There's nothing in your order at the moment")
-        return redirect(reverse('products'))
+    cart = request.session.get('cart', {})
+    if not cart:
+        messages.error(request, "There's nothing in your cart at the moment")
+        return redirect(reverse('items'))
 
     transaction_form = TransactionForm()
     template = 'checkout/checkout.html'

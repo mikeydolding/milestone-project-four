@@ -1,7 +1,7 @@
 
 {% extends "base.html" %}
 {% load static %}
-{% load order_tools %}
+{% load cart_tools %}
 {% comment %}{% load crispy_forms_filters %}
 {% load crispy_forms_tags %} {% endcomment %}
 
@@ -39,24 +39,24 @@
                         <p class="mb-1 mt-0 small text-muted">Subtotal</p>
                     </div>
                 </div>
-                {% for order_item in order_items %}
+                {% for cart_item in cart_items %}
                     <div class="row">
                         <div class="col-2 mb-1">
-                            <a href="{% url 'item_detail' order_item.item.id %}">
-                                {% if order_item.item.image %}
-                                    <img class="w-100" src="{{ order_item.item.image.url }}" alt="{{ item.name }}">
+                            <a href="{% url 'item_detail' cart_item.item.id %}">
+                                {% if cart_item.item.image %}
+                                    <img class="w-100" src="{{ cart_item.item.image.url }}" alt="{{ item.name }}">
                                 {% else %}
                                     <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
                                 {% endif %}
                             </a>
                         </div>
                         <div class="col-7">
-                            <p class="my-0"><strong>{{ order_item.item.name }}</strong></p>
-                            <p class="my-0 small">Size: {% if order_item.item.has_sizes %}{{ order_item.size|upper }}{% else %}N/A{% endif %}</p>
-                            <p class="my-0 small text-muted">Qty: {{ order_item.quantity }}</p>
+                            <p class="my-0"><strong>{{ cart_item.item.name }}</strong></p>
+                            <p class="my-0 small">Size: {% if cart_item.item.has_sizes %}{{ cart_item.size|upper }}{% else %}N/A{% endif %}</p>
+                            <p class="my-0 small text-muted">Qty: {{ cart_item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">
-                            <p class="my-0 small text-muted">${{ order_item.item.price | calc_subtotal:order_item.quantity }}</p>
+                            <p class="my-0 small text-muted">${{ cart_item.item.price | calc_subtotal:cart_item.quantity }}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -114,11 +114,11 @@
                     </fieldset>
 
                     <div class="submit-button text-right mt-5 mb-2">                    
-						<a href="{% url 'view_order' %}" class="btn btn-outline-black rounded-0">
+						<a href="{% url 'view_cart' %}" class="btn btn-outline-black rounded-0">
 							<span class="icon">
 								<i class="fas fa-chevron-left"></i>
 							</span>
-							<span class="font-weight-bold">Update Order</span>
+							<span class="font-weight-bold">Update Cart</span>
 						</a>
 						<button id="submit-button" class="btn btn-dark rounded-0">
 							<span class="font-weight-bold">Complete Transaction</span>

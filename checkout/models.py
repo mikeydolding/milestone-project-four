@@ -55,7 +55,7 @@ class Transaction(models.Model):
         return self.transaction_number
 
 
-class TransactionLineOrderItem(models.Model):
+class TransactionLineCartItem(models.Model):
     transaction = models.ForeignKey(Transaction, null=False, blank=False, on_delete=models.CASCADE, related_name='lineorderitems')
     item = models.ForeignKey(Item, null=False, blank=False, on_delete=models.CASCADE)
     item_size = models.CharField(max_length=2, null=True, blank=True) # XS, S, M, L, XL

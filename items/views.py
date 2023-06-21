@@ -29,7 +29,7 @@ def all_items(request):
                 direction = request.GET['direction']
                 if direction == 'desc':
                      sortkey = f'-{sortkey}'
-            items = items.order_by(sortkey)
+            items = items.cart_by(sortkey)
 
     if request.GET:
         if 'category' in request.GET:
