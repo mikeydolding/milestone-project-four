@@ -14,10 +14,10 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Transaction',
+            name='Order',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('transaction_number', models.CharField(editable=False, max_length=32)),
+                ('order_number', models.CharField(editable=False, max_length=32)),
                 ('full_name', models.CharField(max_length=50)),
                 ('email', models.EmailField(max_length=254)),
                 ('phone_number', models.CharField(max_length=20)),
@@ -29,18 +29,18 @@ class Migration(migrations.Migration):
                 ('county', models.CharField(blank=True, max_length=80, null=True)),
                 ('date', models.DateTimeField(auto_now_add=True)),
                 ('delivery_cost', models.DecimalField(decimal_places=2, default=0, max_digits=6)),
-                ('transaction_total', models.DecimalField(decimal_places=2, default=0, max_digits=10)),
+                ('order_total', models.DecimalField(decimal_places=2, default=0, max_digits=10)),
                 ('grand_total', models.DecimalField(decimal_places=2, default=0, max_digits=10)),
             ],
         ),
         migrations.CreateModel(
-            name='TransactionLineItem',
+            name='OrderLineItem',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('item_size', models.CharField(blank=True, max_length=2, null=True)),
                 ('quantity', models.IntegerField(default=0)),
                 ('lineorderitem_total', models.DecimalField(decimal_places=2, editable=False, max_digits=6)),
-                ('transaction', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='lineorderitems', to='checkout.transaction')),
+                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='lineorderitems', to='checkout.order')),
                 ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='items.item')),
             ],
         ),

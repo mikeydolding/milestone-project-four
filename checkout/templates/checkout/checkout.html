@@ -30,10 +30,10 @@
 
         <div class="row">
             <div class="col-12 col-lg-6 order-lg-last mb-5">
-                <p class="text-muted">Transaction Summary ({{ item_count }})</p>
+                <p class="text-muted">Order Summary ({{ item_count }})</p>
                 <div class="row">
                     <div class="col-7 offset-2">
-                        <p class="mb-1 mt-0 small text-muted">Transaction Item</p>
+                        <p class="mb-1 mt-0 small text-muted">Order Item</p>
                     </div>
                     <div class="col-3 text-right">
                         <p class="mb-1 mt-0 small text-muted">Subtotal</p>
@@ -63,7 +63,7 @@
                 <hr class="my-0">
                 <div class="row text-black text-right">
                     <div class="col-7 offset-2">
-                        <p class="my-0">Transaction Total:</p>
+                        <p class="my-0">Order Total:</p>
                         <p class="my-0">Delivery:</p>
                         <p class="my-0">Grand Total:</p>
                     </div>
@@ -80,18 +80,18 @@
                     {% csrf_token %}
                     <fieldset class="rounded-0 px-3 mb-5">
                         <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
-                        {{ transaction_form.full_name | as_crispy_field }}
-                        {{ transaction_form.email | as_crispy_field }}
+                        {{ order_form.full_name | as_crispy_field }}
+                        {{ order_form.email | as_crispy_field }}
                     </fieldset>
                     <fieldset class="rounded px-3 mb-5">
                         <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
-                        {{ transaction_form.phone_number | as_crispy_field }}
-                        {{ transaction_form.country | as_crispy_field }}
-                        {{ transaction_form.postcode | as_crispy_field }}
-                        {{ transaction_form.town_or_city | as_crispy_field }}
-                        {{ transaction_form.street_address1 | as_crispy_field }}
-                        {{ transaction_form.street_address2 | as_crispy_field }}
-                        {{ transaction_form.county | as_crispy_field }}
+                        {{ order_form.phone_number | as_crispy_field }}
+                        {{ order_form.country | as_crispy_field }}
+                        {{ order_form.postcode | as_crispy_field }}
+                        {{ order_form.town_or_city | as_crispy_field }}
+                        {{ order_form.street_address1 | as_crispy_field }}
+                        {{ order_form.street_address2 | as_crispy_field }}
+                        {{ order_form.county | as_crispy_field }}
                         <div class="form-check form-check-inline float-right mr-0">
 							{% if user.is_authenticated %}
 								<label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
@@ -121,7 +121,7 @@
 							<span class="font-weight-bold">Update Cart</span>
 						</a>
 						<button id="submit-button" class="btn btn-dark rounded-0">
-							<span class="font-weight-bold">Complete Transaction</span>
+							<span class="font-weight-bold">Complete Order</span>
 							<span class="icon">
 								<i class="fas fa-lock"></i>
 							</span>

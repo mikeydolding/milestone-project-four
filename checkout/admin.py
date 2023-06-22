@@ -1,29 +1,29 @@
 from django.contrib import admin
-from .models import Transaction, TransactionLineCartItem
+from .models import Order, OrderLineCartItem
  
 # Register your models here.
 
 
-class TransactionLineCartItemAdminInline(admin.TabularInline):
-    model = TransactionLineCartItem
+class OrderLineCartItemAdminInline(admin.TabularInline):
+    model = OrderLineCartItem
     readonly_fields = ("lineorderitem_total",)
 
 
-class TransactionAdmin(admin.ModelAdmin):
-    inlines = (TransactionLineCartItemAdminInline,)
+class OrderAdmin(admin.ModelAdmin):
+    inlines = (OrderLineCartItemAdminInline,)
 
     readonly_fields = (
-        "transaction_number",
+        "order_number",
         "date",
         "delivery_cost",
-        "transaction_total",
+        "order_total",
         "grand_total",
         #"original_bag",
         #"stripe_pid",
     )
 
     fields = (
-        "transaction_number",
+        "order_number",
         #"user_profile",
         "date",
         "full_name",
@@ -36,17 +36,17 @@ class TransactionAdmin(admin.ModelAdmin):
         "street_address2",
         "county",
         "delivery_cost",
-        "transaction_total",
+        "order_total",
         "grand_total",
         #"original_bag",
         #"stripe_pid",
     )
 
     list_display = (
-        "transaction_number",
+        "order_number",
         "date",
         "full_name",
-        "transaction_total",
+        "order_total",
         "delivery_cost",
         "grand_total",
     )
@@ -54,4 +54,4 @@ class TransactionAdmin(admin.ModelAdmin):
     ordering = ("-date",)
 
 
-admin.site.register(Transaction, TransactionAdmin)
+admin.site.register(Order, OrderAdmin)

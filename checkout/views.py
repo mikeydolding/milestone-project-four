@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 
-from .forms import TransactionForm
+from .forms import OrderForm
 
 
 def checkout(request):
@@ -10,10 +10,10 @@ def checkout(request):
         messages.error(request, "There's nothing in your cart at the moment")
         return redirect(reverse('items'))
 
-    transaction_form = TransactionForm()
+    order_form = OrderForm()
     template = 'checkout/checkout.html'
     context = {
-        'transaction_form': transaction_form,
+        'order_form': order_form,
     }
 
     return render(request, template, context)
