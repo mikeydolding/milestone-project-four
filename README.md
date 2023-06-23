@@ -1,11 +1,7 @@
 # -milestone-project-four
 
 Django administration
-Username: mikehdolding
-Password: MichaelNivelle
 
-Username: superadmin
-Password: MichaelNivelle
 
 Terminal command update
 Since this video was created Django have introduced a new version that will be automatically installed if you use the command in the video.
