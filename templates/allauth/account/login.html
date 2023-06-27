@@ -33,6 +33,11 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
 
+<button class="btn btn-warning" onclick="web3Login()">
+  Log in with Metamask
+</button>
+<br>
+
 <form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
   {{ form.as_p }}
@@ -44,3 +49,56 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 </form>
 
 {% endblock %}
+
+<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+<script>
+function web3Login() {
+    /* Подписываем сообщение */
+    try {
+        window.ethereum.enable().then(function () {
+            provider = new ethers.providers.Web3Provider(window.ethereum);
+            provider.getNetwork().then(function (result) {
+                if (result['chainId'] != 1) {
+                    alert('Switch to Mainnet!');
+                } else { 
+                    provider.listAccounts().then(function (result) {
+                        accountAddress = result[0]; 
+                        signer = provider.getSigner();
+                        signer.signMessage("Sign to auth {{ csrf_token }}").then((signature) => {web3LoginBackend(accountAddress, signature)});
+                    })
+                }
+            })
+        })
+    } catch {
+        alert('Please install MetaMask for your browser.')
+    }
+}
+
+function web3LoginBackend(accountAddress, signature) {
+    /* Отправляем данные на django view */
+    var form = document.createElement('form');
+    form.action = '{% url "main:auth_web3" %}'; // TODO замените на свой адрес
+    form.method = 'POST';
+ 
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'csrfmiddlewaretoken';
+    input.value = '{{ csrf_token }}';
+    form.appendChild(input);    
+
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'accountAddress';
+    input.value = accountAddress;
+    form.appendChild(input);
+
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'signature';
+    input.value = signature;
+    form.appendChild(input);
+
+    document.body.appendChild(form);
+    form.submit();
+}
+</script>
