@@ -12,35 +12,37 @@
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
-{% comment %}<p>{% blocktrans with site.name as site_name %}Please sign in with one
+{% comment %}
+<p>{% blocktrans with site.name as site_name %}Please sign in with one
 of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
 for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-
 <div class="socialaccount_ballot">
-
   <ul class="socialaccount_providers">
     {% include "socialaccount/snippets/provider_list.html" with process="login" %}
   </ul>
-
   <div class="login-or">{% trans 'or' %}</div>
-
 </div>
-
-{% include "socialaccount/snippets/login_extra.html" %}{% endcomment %}
+{% include "socialaccount/snippets/login_extra.html" %}
+{% endcomment %}
 
 {% else %}
 <p>{% blocktrans %}If you have not created an account yet, then please
 <a href="{{ signup_url }}">sign up</a> first.
-
-
-
 {% endblocktrans %}</p>
-<button onclick="myFunction()">Click me!</button>
 
+<button id="onboard">Loading...</button>
+ <!-- Display a connect button and the current account -->
+ <button class="enableEthereumButton">Enable Ethereum</button>
+ <h2>Account: <span class="showAccount"></span></h2>
+ 
+<button onclick="myFunction()">Click me!</button>
 <button class="btn btn-warning" onclick="web3Login()">
   Log in with Metamask
 </button>
-{% comment %}<button onclick="web3Login()">Click me!</button>{% endcomment %}
+
+<button id="connect-btn">Connect Wallet</button>
+<div id="account">Account not connected</div>
+<div id="error"></div>
 {% endif %}
 
 

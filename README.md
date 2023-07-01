@@ -29,6 +29,7 @@ https://fontawesome.com/docs/web/use-with/python-django
 
 python3 manage.py runserver
 
+python manage.py startapp [insert name of app]
 
 items.Item.image: (fields.E210) Cannot use ImageField because Pillow is not installed.
         HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
