@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'bootstrap5',
     'fontawesomefree',
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+    'web3_auth'
 ]
 
 MIDDLEWARE = [

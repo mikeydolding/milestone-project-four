@@ -25,5 +25,6 @@ urlpatterns = [
     path('items/', include('items.urls')),
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
+    path('web3_auth/', include('web3_auth.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -31,6 +31,8 @@ window.addEventListener("DOMContentLoaded", () => {
       onboarding.stopOnboarding();
       showAccountDesc.innerHTML = accounts[0];
     } else {
+      showAccountDesc.innerHTML = '';
+
       onboardButton.innerText = "Connect";
       onboardButton.onclick = async () => {
         alert('connect')
@@ -47,8 +49,9 @@ window.addEventListener("DOMContentLoaded", () => {
               } else { 
                   provider.listAccounts().then(function (result) {
                       accountAddress = result[0]; 
+                      const domain = window.location.host
                       signer = provider.getSigner();
-                      signer.signMessage("Sign to auth {{ csrf_token }}").then((signature) => {web3LoginBackend(accountAddress, signature)});
+                      signer.signMessage(`${domain} wants you to sign to your Ethereum account auth {{ csrf_token }}`).then((signature) => {web3LoginBackend(accountAddress, signature)});
                   })
               }
           })
@@ -64,34 +67,39 @@ window.addEventListener("DOMContentLoaded", () => {
       updateButton();
     });
   }
+
+  const web3LoginBackend = (accountAddress, signature)=> {
+    alert(accountAddress)
+    alert(signature)
+    onboardButton.innerText = "Connected";
+    onboardButton.disabled = true;
+    showAccountDesc.innerHTML = accountAddress;
+  
+    //var form = document.createElement('form');
+    //form.action = '{% url "" %}'; 
+    //form.method = 'POST';
+  
+    //var input = document.createElement('input');
+    //input.type = 'hidden';
+    //input.name = 'csrfmiddlewaretoken';
+    //input.value = '{{ csrf_token }}';
+    //form.appendChild(input);    
+  
+    //var input = document.createElement('input');
+    //input.type = 'hidden';
+    //input.name = 'accountAddress';
+    //input.value = accountAddress;
+    //form.appendChild(input);
+  
+    //var input = document.createElement('input');
+    //input.type = 'hidden';
+    //input.name = 'signature';
+    //input.value = signature;
+    //form.appendChild(input);
+  
+    //document.body.appendChild(form);
+    //form.submit();
+  }
+  
 });
 
-function web3LoginBackend(accountAddress, signature) {
-  alert(accountAddress)
-  alert(signature)
-
-  var form = document.createElement('form');
-  form.action = '{% url "main:auth_web3" %}'; 
-  form.method = 'POST';
-
-  var input = document.createElement('input');
-  input.type = 'hidden';
-  input.name = 'csrfmiddlewaretoken';
-  input.value = '{{ csrf_token }}';
-  form.appendChild(input);    
-
-  var input = document.createElement('input');
-  input.type = 'hidden';
-  input.name = 'accountAddress';
-  input.value = accountAddress;
-  form.appendChild(input);
-
-  var input = document.createElement('input');
-  input.type = 'hidden';
-  input.name = 'signature';
-  input.value = signature;
-  form.appendChild(input);
-
-  document.body.appendChild(form);
-  form.submit();
-}
