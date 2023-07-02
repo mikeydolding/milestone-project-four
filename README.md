@@ -34,6 +34,7 @@ python manage.py startapp [insert name of app]
 items.Item.image: (fields.E210) Cannot use ImageField because Pillow is not installed.
         HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
 pip3 install pillow
+pip3 freeze > requirements.txt
 
 python3 manage.py makemigrations --dry-run
 python3 manage.py makemigrations

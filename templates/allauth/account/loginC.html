@@ -45,7 +45,6 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 <div id="error"></div>
 {% endif %}
 
-
 <form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
   {{ form.as_p }}
@@ -58,3 +57,5 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 
 {% endblock %}
+
+{% comment %}<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>{% endcomment %}
