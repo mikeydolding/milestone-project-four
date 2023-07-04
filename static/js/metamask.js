@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
 //}
   const updateButton = () => {
     if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
-      onboardButton.innerText = "Click here to install MetaMask!";
+      onboardButton.innerText = "Click here to install MetaMask";
       onboardButton.onclick = () => {
         onboardButton.innerText = "Onboarding in progress";
         onboardButton.disabled = true;
