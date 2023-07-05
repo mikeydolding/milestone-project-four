@@ -243,26 +243,7 @@
       </div>            
   </div>
   {% include 'includes/confirmations/messages.html' %}
-<!--{% comment %}
-    {% if messages %}
-    <div class="message-container">
-      {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/confirmations/confirmation_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/confirmations/confirmation_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/confirmations/confirmation_success.html' %}
-                    {% else %}
-                        {% include 'includes/confirmations/confirmation_info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
 
-    </div>
-    {% endif %} 
-    {% endcomment %}-->
     
     {% block page_header %} 
     {% endblock %} 
