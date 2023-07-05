@@ -1,6 +1,7 @@
 # -milestone-project-four
 
 Django administration
+superuser password
 
 
 Terminal command update
@@ -46,3 +47,10 @@ python3 manage.py shell
 You can pass 'zero' to unapply migrations for an app.
 all migrations: python3 manage.py migrate example_app zero 
 specific migration: python3 manage.py migrate socialaccount 0004
+
+Login emails from console:
+Hello from milestone_prjfour!
+
+You're receiving this e-mail because user superuser has given yours as an e-mail address to connect their account.
+
+To confirm this is correct, go to http://127.0.0.1:8000/accounts/confirm-email/Mg:1qH2Mo:PQvp4CaDNQxFTPH256cP8FtW59QNi4vSncEobzjAHms/
