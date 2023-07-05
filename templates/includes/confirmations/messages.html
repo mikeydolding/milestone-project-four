@@ -20,7 +20,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-                {% if grand_total %}
+                {% if grand_total and not on_profile_page %}
                 <p class="bg-white text-dark py-1">Your Cart ({{ item_count }} items)</p>
                 <div class="cart-notification">
                     {% for cart_item in cart_items %}
