@@ -11,7 +11,7 @@ from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from cart.contexts import cart_contents
 
-import stripe
+#import stripe
 import json
 
 

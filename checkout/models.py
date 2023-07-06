@@ -56,7 +56,7 @@ class Order(models.Model):
         return self.order_number
 
 
-class OrderLineCartItem(models.Model):
+class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineorderitems')
     item = models.ForeignKey(Item, null=False, blank=False, on_delete=models.CASCADE)
     item_size = models.CharField(max_length=2, null=True, blank=True) # XS, S, M, L, XL
