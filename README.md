@@ -1,8 +1,7 @@
 # -milestone-project-four
 
 Django administration
-superuser password
-
+mike P@$$8ord
 
 Terminal command update
 Since this video was created Django have introduced a new version that will be automatically installed if you use the command in the video.
@@ -26,7 +25,6 @@ Please check if this line of code is at the top of your settings.py file, it is 
 import os
 
 https://fontawesome.com/docs/web/use-with/python-django
-
 
 python3 manage.py runserver
 
@@ -54,3 +52,5 @@ Hello from milestone_prjfour!
 You're receiving this e-mail because user superuser has given yours as an e-mail address to connect their account.
 
 To confirm this is correct, go to http://127.0.0.1:8000/accounts/confirm-email/Mg:1qH2Mo:PQvp4CaDNQxFTPH256cP8FtW59QNi4vSncEobzjAHms/
+
+python manage.py createsuperuser --username=joe --email=joe@example.com
